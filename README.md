@@ -24,7 +24,14 @@ As a MERN/Node dev, Docker helps you:
 - Manage multiple services (API + DB + Redis)
 
 ## 3. Key Concepts
-🧱 Image  
+### 🧱 Image  
 - Blueprint/template
 - Like a class in OOP
 👉 Example: `node:18`, `mongo`
+
+### 📦 Container
+- Running instance of an image
+- Like an object of a class
+
+### 🐳 Docker Engine
+- The system that runs containers
