@@ -1,9 +1,11 @@
-# docker-doc
+## Here all teh docker images exist.
+https://hub.docker.com/  
 
 ## Docker commands.
+- docker --version
+- docker compose -f filename up -d
+- docker compose -f docker-compose.yml down
 
-### docker compose -f filename up -d
-### docker compose -f docker-compose.yml down
 
 ---
 
@@ -35,3 +37,6 @@ As a MERN/Node dev, Docker helps you:
 
 ### 🐳 Docker Engine
 - The system that runs containers
+
+👉 Image = Blueprint  
+👉 Container = Running App from that Blueprint  
