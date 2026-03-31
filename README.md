@@ -1,10 +1,11 @@
-## Here all teh docker images exist.
+<img width="1213" height="130" alt="image" src="https://github.com/user-attachments/assets/7efa18ef-a88a-4ea0-9fa4-d82df49ef68b" />## Here all teh docker images exist.
 https://hub.docker.com/  
 
 ## Docker commands.
 - docker --version
 - docker compose -f filename up -d
 - docker compose -f docker-compose.yml down
+- docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
 
 
 ---
