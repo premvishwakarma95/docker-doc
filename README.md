@@ -6,6 +6,7 @@ https://hub.docker.com/
 - docker compose -f filename up -d
 - docker compose -f docker-compose.yml down
 - docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+- docker compose down -v 
 
 
 ---
@@ -41,3 +42,4 @@ As a MERN/Node dev, Docker helps you:
 
 👉 Image = Blueprint  
 👉 Container = Running App from that Blueprint  
+
