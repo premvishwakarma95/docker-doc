@@ -59,6 +59,7 @@ Please check i have added `client` folder where i have created file after this w
 ## 6. Commands.
 ### Command to pull image from docker hub.
 - `docker build . ` - Command to create a Docker image from your project. Run this command in current directory where Dockerfile exists.
+- `docker image ls` - command to list images.
 
 - docker pull node:18
 - docker pull mongo
