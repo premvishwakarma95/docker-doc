@@ -68,6 +68,6 @@ Please check i have added `client` folder where i have created file after this w
 - `docker stop <container_name>` - command to stop container.
 - 55:57 m
 
-- docker pull node:18
-- docker pull mongo
+- `docker pull node:18` - command to pull node image from docker hub.
+- `docker pull mongo` - command to pull mongo image from docker hub.
 
