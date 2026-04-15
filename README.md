@@ -52,9 +52,14 @@ As a MERN/Node dev, Docker helps you:
 - Docker registry
 - <img width="1112" height="531" alt="image" src="https://github.com/user-attachments/assets/4f9741fd-1bed-43a3-8da2-caaf423594cc" />
 
+## 5. How to create Dockerfile.
+Please check i have added `client` folder where i have created file after this we create image that we create container of that.
 
-## 4. Commands.
+
+## 6. Commands.
 ### Command to pull image from docker hub.
+- `docker build . ` - Command to create a Docker image from your project. Run this command in current directory where Dockerfile exists.
+
 - docker pull node:18
 - docker pull mongo
 
