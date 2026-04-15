@@ -63,6 +63,7 @@ Please check i have added `client` folder where i have created file after this w
 - `docker image ls` - command to list images. You can get your image id and info about the image.
 - `docker run <image_id>` - This command creates and starts a container from an image.
 - `docker ps` - command to list containers. You can see container id and name.
+- `docker stop <container_name>` - command to stop container.
 
 - docker pull node:18
 - docker pull mongo
