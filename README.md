@@ -45,6 +45,12 @@ As a MERN/Node dev, Docker helps you:
 👉 Image = Blueprint  
 👉 Container = Running App from that Blueprint  
 
+## 4. Main components of docker.
+- Docker file
+- Docker image
+- Docker container
+- Docker registry
+
 ## 4. Commands.
 ### Command to pull image from docker hub.
 - docker pull node:18
