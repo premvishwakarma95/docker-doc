@@ -50,6 +50,8 @@ As a MERN/Node dev, Docker helps you:
 - Docker image
 - Docker container
 - Docker registry
+- <img width="1112" height="531" alt="image" src="https://github.com/user-attachments/assets/4f9741fd-1bed-43a3-8da2-caaf423594cc" />
+
 
 ## 4. Commands.
 ### Command to pull image from docker hub.
