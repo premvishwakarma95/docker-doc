@@ -18,6 +18,7 @@ Docker is a tool that lets you package your app + dependencies + environment int
 - MongoDB
 - Environment variables
 - ➡️ All packed into one “box” = container
+- Example we want share our app with test then we shared without docker container mern app with tester then he tried to run it so he isntalled node, mongo etc. but still not working becauase of version compatibility so here docker comes to solve this issue we don't need to install all that things like node, mongo etc. just need to install docker and boom. this is why we use docker.
 
 ## 2. Why Docker is Important?
 As a MERN/Node dev, Docker helps you:  
