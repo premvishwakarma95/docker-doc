@@ -36,6 +36,7 @@ As a MERN/Node dev, Docker helps you:
 👉 Example: `node:18`, `mongo`
 
 ### 📦 Container
+- It is stand alone machine.
 - Running instance of an image
 - Like an object of a class
 
@@ -59,7 +60,9 @@ Please check i have added `client` folder where i have created file after this w
 ## 6. Commands.
 ### Command to pull image from docker hub.
 - `docker build . ` - Command to create a Docker image from your project. Run this command in current directory where Dockerfile exists.
-- `docker image ls` - command to list images.
+- `docker image ls` - command to list images. You can get your image id and info about the image.
+- `docker run <image_id>` - This command creates and starts a container from an image.
+- `docker ps` - command to list containers. You can see container id and name.
 
 - docker pull node:18
 - docker pull mongo
