@@ -51,7 +51,7 @@ As a MERN/Node dev, Docker helps you:
 - Docker image
 - Docker container
 - Docker registry
-- <img width="1112" height="531" alt="image" src="https://github.com/user-attachments/assets/4f9741fd-1bed-43a3-8da2-caaf423594cc" />
+<img width="1112" height="531" alt="image" src="https://github.com/user-attachments/assets/4f9741fd-1bed-43a3-8da2-caaf423594cc" />
 
 ## 5. How to create Dockerfile.
 Please check i have added `client` folder where i have created file after this we create image that we create container of that.
@@ -66,6 +66,7 @@ Please check i have added `client` folder where i have created file after this w
 - `docker run -p 3000:3000 <image_id>` - command to create and start container for all system i mean we can access in any sytem by this command.
 - `docker ps` - command to list containers. You can see container id and name.
 - `docker stop <container_name>` - command to stop container.
+- 55:57 m
 
 - docker pull node:18
 - docker pull mongo
