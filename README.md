@@ -82,6 +82,7 @@ CMD ["npm", "run", "dev"]
 - `docker run -p 3000:3000 <image_id>` - command to create and start container for all system i mean we can access in any sytem by this command.
 - `docker run --name my-client -p 5173:5173 client-app` - command to create and start container with name.
 - `docker run -d --name my-client -p 5173:5173 client-app` - Command to run container in background. detached mode.
+- `docker run -d --rm --name my-client -p 5173:5173 client-app` - command to run and automatically delete container when we stop the container so we use --rm.
 - `docker ps` - command to list containers. You can see container id and name.
 - `docker stop <container_name>` - command to stop container.
 - 55:57 m
