@@ -81,6 +81,7 @@ CMD ["npm", "run", "dev"]
 - `docker run <image_id>` - This command creates and starts a container from an image. But this will not be accessible in browser because it's running in it's environment or standalone system. so we use another command to expose all the environments Check below command.
 - `docker run -p 3000:3000 <image_id>` - command to create and start container for all system i mean we can access in any sytem by this command.
 - `docker run --name my-client -p 5173:5173 client-app` - command to create and start container with name.
+- `docker run -d --name my-client -p 5173:5173 client-app` - Command to run container in background. detached mode.
 - `docker ps` - command to list containers. You can see container id and name.
 - `docker stop <container_name>` - command to stop container.
 - 55:57 m
