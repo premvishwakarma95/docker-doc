@@ -198,4 +198,37 @@ docker push <your-username>/client-app:latest
 
 ---
 
+# Docker Volume.
+To store data in a Docker volume, you use the -v (or --volume) flag while running a container.  
+📦 1. Create and use a volume (basic)  
+```bash
+docker run -v my-volume:/data nginx
+```
+
+2. Full commmand.  
+```bash
+docker run -d \
+  --name server-container \
+  -p 5000:5000 \
+  -v server-data:/server/data \
+  server-app
+
+// Command in one line.
+docker run -d --name server-container -p 5000:5000 -v server-data:/server/data server-app
+
+// 💾 -v server-data:/server/data
+// 👉 Volume mapping (VERY IMPORTANT)
+// volume_name : container_path
+// server-data → Docker volume (persistent storage)
+// /server/data → folder inside container
+```
+
+3. command to see volume list
+```bash
+docker volume ls
+```
+
+---
+
+# What is a Bind Mount?
 
