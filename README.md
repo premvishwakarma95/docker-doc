@@ -69,7 +69,15 @@ Please check i have added `client` folder where i have created file after this w
 - `docker ps` - command to list containers. You can see container id and name.
 - `docker stop <container_name>` - command to stop container.
 - 55:57 m
+- Full flow when we do changes on code or dependency.
+```bash
+  # after code change
+docker build -t client-app .
 
-- `docker pull node:18` - command to pull node image from docker hub.
-- `docker pull mongo` - command to pull mongo image from docker hub.
+# remove old container
+docker rm -f client-container
+
+# run new container
+docker run -d --name client-container -p 5173:5173 client-app
+```
 
