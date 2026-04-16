@@ -78,6 +78,7 @@ CMD ["npm", "run", "dev"]
 - `docker build -t client-app .` - command to give images name `-t` stands for tag name now image name would be client-app.
 - `docker image ls` - command to list images. You can get your image id and info about the image.
 - `docker images -a` - command to list images if image name is not given because `docker image ls` will not show list so use thhis one.
+- `docker rmi <image_name_or_id>` - command to delete docker image.
 - `docker run <image_id>` - This command creates and starts a container from an image. But this will not be accessible in browser because it's running in it's environment or standalone system. so we use another command to expose all the environments Check below command.
 - `docker run -p 3000:3000 <image_id>` - command to create and start container for all system i mean we can access in any sytem by this command.
 - `docker run --name my-client -p 5173:5173 client-app` - command to create and start container with name.
