@@ -55,6 +55,21 @@ As a MERN/Node dev, Docker helps you:
 
 ## 5. How to create Dockerfile.
 Please check i have added `client` folder where i have created file after this we create image that we create container of that.
+```bash
+FROM node:22
+
+WORKDIR /client
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 5173
+
+CMD ["npm", "run", "dev"]
+```
 
 
 ## 6. Commands.
