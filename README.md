@@ -231,6 +231,7 @@ docker volume ls
 ---
 
 # What is a Bind Mount?
+It won't create volume just make container file to local file realtime changes.
 ```bash
 your-local-folder  ↔  container-folder
 ```
