@@ -54,7 +54,7 @@ As a MERN/Node dev, Docker helps you:
 <img width="1112" height="531" alt="image" src="https://github.com/user-attachments/assets/4f9741fd-1bed-43a3-8da2-caaf423594cc" />
 
 ## 5. How to create Dockerfile.
-Please check i have added `client` folder where i have created file after this we create image that we create container of that.
+Check below this is a docker file for client i mean for reactjs.
 ```bash
 FROM node:22
 
