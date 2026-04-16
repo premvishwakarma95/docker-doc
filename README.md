@@ -231,4 +231,18 @@ docker volume ls
 ---
 
 # What is a Bind Mount?
-
+```bash
+your-local-folder  ↔  container-folder
+```
+- Changes on your system → instantly visible in container
+- Changes in container → reflect on your system
+```bash
+docker run -v <local-path>:<container-path> <image>
+```
+- Example
+```bash
+docker run -d -p 5173:5173 -v ./client:/app client-app
+```
+Meaning
+- ./client → your local project folder
+- /app → inside container
