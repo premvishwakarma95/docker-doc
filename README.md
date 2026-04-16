@@ -69,7 +69,7 @@ Please check i have added `client` folder where i have created file after this w
 - `docker ps` - command to list containers. You can see container id and name.
 - `docker stop <container_name>` - command to stop container.
 - 55:57 m
-- Full flow when we do changes on code or dependency.
+- Full flow when we do changes on code or dependency to rebuild and restart the image and container.
 ```bash
   # after code change
 docker build -t client-app .
