@@ -60,6 +60,7 @@ Please check i have added `client` folder where i have created file after this w
 ## 6. Commands.
 ### Command to pull image from docker hub.
 - `docker build . ` - Command to create a Docker image from your project. Run this command in current directory where Dockerfile exists.
+- `docker build -t client-app .` - command to give images name `-t` stands for tag name now image name would be client-app.
 - `docker image ls` - command to list images. You can get your image id and info about the image.
 - `docker images -a` - command to list images if image name is not given because `docker image ls` will not show list so use thhis one.
 - `docker run <image_id>` - This command creates and starts a container from an image. But this will not be accessible in browser because it's running in it's environment or standalone system. so we use another command to expose all the environments Check below command.
