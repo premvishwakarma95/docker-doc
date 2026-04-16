@@ -86,8 +86,8 @@ CMD ["npm", "run", "dev"]
 - `docker run -d --rm --name my-client -p 5173:5173 client-app` - command to run and automatically delete container when we stop the container so we use --rm.
 - `docker ps` - command to list containers. You can see container id and name.
 - `docker stop <container_name>` - command to stop container.
-- 55:57 m
-- Full flow when we do changes on code or dependency to rebuild and restart the image and container.
+- `docker run -it <image_name_or_id>` - command to run container in a interactive way. -it stand for interactive terminal.
+- Full flow when we do changes or update on code or dependency to rebuild and restart the image and container.
 ```bash
   # after code change
 docker build -t client-app .
