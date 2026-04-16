@@ -99,3 +99,103 @@ docker rm -f client-container
 docker run -d --name client-container -p 5173:5173 client-app
 ```
 
+---
+
+# 🚀 Steps to Push Docker Image to Docker Hub
+
+---
+
+## 1. Go to your project folder
+
+```bash
+cd docker-mern-app/client
+```
+
+(or go to `server` if pushing backend)
+
+---
+
+## 2. Build Docker Image
+
+```bash
+docker build -t client-app .
+```
+
+---
+
+## 3. Login to Docker Hub
+
+```bash
+docker login
+```
+
+Enter your:
+
+* Username
+* Password
+
+---
+
+## 4. Create Repository on Docker Hub
+
+* Open https://hub.docker.com
+* Click **Create Repository**
+* Give name: `client-app`
+
+---
+
+## 5. Tag the Image
+
+```bash
+docker tag client-app <your-username>/client-app:latest
+```
+
+### Example:
+
+```bash
+docker tag client-app premvishwakarma/client-app:latest
+```
+
+---
+
+## 6. Push Image to Docker Hub
+
+```bash
+docker push <your-username>/client-app:latest
+```
+
+### Example:
+
+```bash
+docker push premvishwakarma/client-app:latest
+```
+
+---
+
+## 7. Verify on Docker Hub
+
+* Go to your repository
+* Check if image is uploaded
+
+---
+
+## 8. Pull Image Anywhere
+
+```bash
+docker pull <your-username>/client-app:latest
+```
+
+---
+
+## 🔁 Full Flow (Quick)
+
+```bash
+docker build -t client-app .
+docker login
+docker tag client-app <your-username>/client-app:latest
+docker push <your-username>/client-app:latest
+```
+
+---
+
+
