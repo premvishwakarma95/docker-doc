@@ -247,3 +247,11 @@ docker run -d -p 5173:5173 -v ./client:/app client-app
 Meaning
 - ./client → your local project folder
 - /app → inside container
+
+---
+
+# How to take pull of an image from docker registry.
+run command to take pull
+```bash
+docker pull mysql
+docker run mysql
