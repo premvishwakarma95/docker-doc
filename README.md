@@ -87,6 +87,7 @@ CMD ["npm", "run", "dev"]
 - `docker ps` - command to list containers. You can see container id and name.
 - `docker stop <container_name>` - command to stop container.
 - `docker run -it <image_name_or_id>` - command to run container in a interactive way. -it stand for interactive terminal.
+- `docker logs <container_name>` - command to see logs of any container.
 - Full flow when we do changes or update on code or dependency to rebuild and restart the image and container.
 ```bash
   # after code change
