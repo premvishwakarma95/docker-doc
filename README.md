@@ -268,35 +268,128 @@ docker run -d --env MYSQL_ROOT_PASSWORD="root" --name mysqldb mysql
 
 ---
 
-# Docker network.
+# 🌐 Docker Network
 <img width="1004" height="520" alt="image" src="https://github.com/user-attachments/assets/c453eece-81b0-4092-921a-af60a1805b21" />
-Docker network is how containers talk to each other and the outside world.  
-👉 A Docker Network is a virtual network that connects:  
-- containers ↔ containers
-- containers ↔ host (your system)
-- containers ↔ internet  
-🔥 Why do we need it?  
-Without network:  
-- ❌ Containers are isolated
-- ❌ Cannot communicate  
-With network:  
-- ✅ Frontend can call backend
-- ✅ Backend can connect to DB  
-🧩 Real Example (Your MERN App)  
+Docker network is how **containers communicate with each other and the outside world**.
+
+---
+
+## 🧠 Definition
+
+👉 A **Docker Network** is a virtual network that connects:
+
+* containers ↔ containers
+* containers ↔ host (your system)
+* containers ↔ internet
+
+---
+
+## 🔥 Why do we need it?
+
+### ❌ Without network:
+
+* Containers are isolated
+* Cannot communicate with each other
+
+### ✅ With network:
+
+* Frontend can call backend
+* Backend can connect to database
+
+---
+
+## 🧩 Real Example (MERN App)
+
+```text
 React (client container)
         ↓
 Node (server container)
         ↓
-MongoDB container
-Commands  
-```bash
-docker network create my-network
-docker network ls
-docker run -d --env MYSQL_ROOT_PASSWORD="root" --env MYSQL_DATABASE="userinfo" --name mysqldb --network my-network mysql
-```
-Run Containers  
-```bash
-docker run -d --name server --network my-network server-app
-docker run -d --name client --network my-network client-app
+MongoDB / MySQL container
 ```
 
+---
+
+## 🚀 Create and Manage Network
+
+### Create a network
+
+```bash
+docker network create my-network
+```
+
+### List networks
+
+```bash
+docker network ls
+```
+
+---
+
+## 🐬 Run Database Container (MySQL)
+
+```bash
+docker run -d \
+  --name mysqldb \
+  --network my-network \
+  -e MYSQL_ROOT_PASSWORD=root \
+  -e MYSQL_DATABASE=userinfo \
+  mysql
+```
+
+---
+
+## ⚙️ Run Application Containers
+
+### Backend (Server)
+
+```bash
+docker run -d \
+  --name server \
+  --network my-network \
+  server-app
+```
+
+### Frontend (Client)
+
+```bash
+docker run -d \
+  --name client \
+  --network my-network \
+  client-app
+```
+
+---
+
+## 🔗 Communication Between Containers
+
+Since all containers are on the same network (`my-network`), they can communicate using **container names**:
+
+```bash
+http://server:5000
+```
+
+👉 No need to use `localhost` or IP addresses.
+
+---
+
+## 🎯 Key Points
+
+* Docker network enables container communication
+* Use **custom networks** for better control
+* Containers can talk using **names as DNS**
+* Essential for multi-container apps (like MERN stack)
+
+---
+
+## 🧠 Summary
+
+| Feature         | Benefit            |
+| --------------- | ------------------ |
+| Custom Network  | Easy communication |
+| Container Names | Acts like DNS      |
+| Isolation       | Secure environment |
+
+---
+
+🚀 Now your frontend, backend, and database can communicate seamlessly using Docker networking.
