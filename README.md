@@ -288,9 +288,15 @@ React (client container)
 Node (server container)
         ↓
 MongoDB container
+Commands  
 ```bash
 docker network create my-network
 docker network ls
 docker run -d --env MYSQL_ROOT_PASSWORD="root" --env MYSQL_DATABASE="userinfo" --name mysqldb --network my-network mysql
+```
+Run Containers  
+```bash
+docker run -d --name server --network my-network server-app
+docker run -d --name client --network my-network client-app
 ```
 
