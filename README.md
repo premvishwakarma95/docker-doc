@@ -88,6 +88,7 @@ CMD ["npm", "run", "dev"]
 - `docker stop <container_name>` - command to stop container.
 - `docker run -it <image_name_or_id>` - command to run container in a interactive way. -it stand for interactive terminal.
 - `docker logs <container_name>` - command to see logs of any container.
+- `docker inspect <container_name>` - command to see the info about the container of the image of docker, info like ip etc.
 - Full flow when we do changes or update on code or dependency to rebuild and restart the image and container.
 ```bash
   # after code change
