@@ -393,3 +393,9 @@ http://server:5000
 ---
 
 🚀 Now your frontend, backend, and database can communicate seamlessly using Docker networking.
+
+---
+
+# DOCKER COMPOSE.
+- Configue file to manage multiple containers running on same machine.
+- With this we can up multiple containers with one command.
