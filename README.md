@@ -270,4 +270,22 @@ docker run -d --env MYSQL_ROOT_PASSWORD="root" --name mysqldb mysql
 
 # Docker network.
 <img width="1004" height="520" alt="image" src="https://github.com/user-attachments/assets/c453eece-81b0-4092-921a-af60a1805b21" />
+Docker network is how containers talk to each other and the outside world.  
+👉 A Docker Network is a virtual network that connects:  
+- containers ↔ containers
+- containers ↔ host (your system)
+- containers ↔ internet  
+🔥 Why do we need it?  
+Without network:  
+- ❌ Containers are isolated
+- ❌ Cannot communicate  
+With network:  
+- ✅ Frontend can call backend
+- ✅ Backend can connect to DB  
+🧩 Real Example (Your MERN App)  
+React (client container)
+        ↓
+Node (server container)
+        ↓
+MongoDB container
 
