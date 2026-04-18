@@ -256,3 +256,11 @@ run command to take pull
 ```bash
 docker pull mysql
 docker run mysql
+```
+
+---
+
+# How pull and run docker in one command with env variable setup if needed.
+```bash
+docker run -d --env MYSQL_ROOT_PASSWORD="root" --name mysqldb mysql
+```
