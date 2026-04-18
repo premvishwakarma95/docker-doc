@@ -265,3 +265,9 @@ docker run mysql
 ```bash
 docker run -d --env MYSQL_ROOT_PASSWORD="root" --name mysqldb mysql
 ```
+
+---
+
+# Docker network.
+<img width="1004" height="520" alt="image" src="https://github.com/user-attachments/assets/c453eece-81b0-4092-921a-af60a1805b21" />
+
