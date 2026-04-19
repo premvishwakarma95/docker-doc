@@ -399,3 +399,6 @@ http://server:5000
 # DOCKER COMPOSE.
 - Configue file to manage multiple containers running on same machine.
 - With this we can up multiple containers with one command.
+  
+### Commands.
+docker-compose up
