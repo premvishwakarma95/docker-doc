@@ -401,4 +401,11 @@ http://server:5000
 - With this we can up multiple containers with one command.
   
 ### Commands.
-docker-compose up
+```bash
+// 🚀 1. Build + Run Everything (First Time)
+docker-compose up --build
+// 🚀 2. Run in Background (Detached Mode)
+docker-compose up -d
+// 🔁 3. Rebuild After Code Changes (Important)
+docker-compose up --build -d
+```
