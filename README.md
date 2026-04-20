@@ -408,4 +408,18 @@ docker-compose up --build
 docker-compose up -d
 // 🔁 3. Rebuild After Code Changes (Important)
 docker-compose up --build -d
+// 🛑 4. Stop All Containers
+docker-compose down
+// 💣 5. Stop + Remove Everything (Including Data)
+docker-compose down -v
+// 🔍 6. Check Running Containers
+docker ps
+// 📜 7. View Logs
+docker-compose logs
+// For specific service:
+docker-compose logs backend
+// 🔄 8. Restart Services
+docker-compose restart
+// 👉 Restart specific:
+docker-compose restart backend
 ```
