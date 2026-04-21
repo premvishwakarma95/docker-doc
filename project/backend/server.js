@@ -18,8 +18,10 @@ app.use((req, res) => res.status(404).json({ error: "Route not found" }));
 
 const start = async () => {
   await connectDB();
+  console.log('DB connected successfully');
   try {
     await connectRedis();
+    console.log('Redis connected successfully');
   } catch (err) {
     console.error("Redis failed to connect at startup:", err.message);
   }
