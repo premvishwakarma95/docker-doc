@@ -423,3 +423,5 @@ docker-compose restart
 // 👉 Restart specific:
 docker-compose restart backend
 ```
+
+Note - I have added project direcory in that we have added everything like dockerfile, docker compose everything.
