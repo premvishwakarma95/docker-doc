@@ -14,6 +14,9 @@ const invalidateCache = async () => {
   }
 };
 
+// Fetch all tasks
+// Uses Redis caching to improve performance for multiple users accessing shared data
+// Helps collaboration by ensuring fast reads for all users viewing the same task list
 exports.getTasks = async (req, res) => {
   try {
     if (redisClient.isOpen) {
@@ -35,6 +38,9 @@ exports.getTasks = async (req, res) => {
   }
 };
 
+// Create a new task
+// Represents a collaborative action where a user adds a task to the shared system
+// Cache is invalidated so all users immediately see the newly created task
 exports.createTask = async (req, res) => {
   try {
     const { title } = req.body;
