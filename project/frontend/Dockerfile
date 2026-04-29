@@ -4,12 +4,14 @@ FROM node:20-alpine
 # Set working directory inside container
 WORKDIR /app
 
+
 # Copy package.json and package-lock.json (if available)
-# This helps leverage Docker cache for dependencies
+# This helps leverage Docker cache for dependencies.  
 COPY package*.json ./
 
 # Install project dependencies
 RUN npm install
+
 
 # Copy all remaining project files into the container
 COPY . .
