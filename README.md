@@ -425,3 +425,376 @@ docker-compose restart backend
 ```
 
 Note - I have added project direcory in that we have added everything like dockerfile, docker compose everything.
+
+---
+
+# Docker Interview Questions & Answers
+
+## 1. What is Docker?
+Docker is an open-source platform used to develop, package, and run applications inside lightweight containers.
+
+Containers include:
+- Application code
+- Runtime
+- Libraries
+- Dependencies
+
+This ensures the application works consistently across environments.
+
+---
+
+## 2. What is the difference between Docker and Virtual Machine?
+
+| Docker | Virtual Machine |
+|---|---|
+| Uses containerization | Uses virtualization |
+| Lightweight | Heavyweight |
+| Shares host OS kernel | Has separate guest OS |
+| Faster startup | Slower startup |
+| Less resource usage | More resource usage |
+
+---
+
+## 3. What is a Docker Image?
+A Docker image is a read-only template used to create containers.
+
+Example:
+```bash
+docker pull node:20
+```
+
+---
+
+## 4. What is a Docker Container?
+A container is a running instance of a Docker image.
+
+Example:
+```bash
+docker run -it node:20
+```
+
+---
+
+## 5. Difference between Image and Container
+
+| Image | Container |
+|---|---|
+| Blueprint/template | Running instance |
+| Read-only | Read-write |
+| Static | Dynamic |
+
+---
+
+## 6. What is Dockerfile?
+A Dockerfile is a text file containing instructions to build a Docker image.
+
+Example:
+```dockerfile
+FROM node:20
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
+```
+
+---
+
+## 7. Important Docker Commands
+
+### List running containers
+```bash
+docker ps
+```
+
+### List all containers
+```bash
+docker ps -a
+```
+
+### List images
+```bash
+docker images
+```
+
+### Build image
+```bash
+docker build -t myapp .
+```
+
+### Run container
+```bash
+docker run -p 3000:3000 myapp
+```
+
+### Stop container
+```bash
+docker stop <container_id>
+```
+
+### Remove container
+```bash
+docker rm <container_id>
+```
+
+### Remove image
+```bash
+docker rmi <image_id>
+```
+
+---
+
+## 8. What is Docker Hub?
+Docker Hub is a cloud-based registry used to store and share Docker images.
+
+---
+
+## 9. What is the difference between CMD and ENTRYPOINT?
+
+| CMD | ENTRYPOINT |
+|---|---|
+| Can be overridden | Usually fixed |
+| Provides default command | Main executable |
+
+Example:
+```dockerfile
+CMD ["npm", "start"]
+```
+
+```dockerfile
+ENTRYPOINT ["node"]
+```
+
+---
+
+## 10. What is Docker Compose?
+Docker Compose is a tool used to manage multi-container applications.
+
+Example:
+```yaml
+version: '3'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+```
+
+Run:
+```bash
+docker-compose up
+```
+
+---
+
+## 11. What is Volume in Docker?
+Volumes are used for persistent storage.
+
+Example:
+```bash
+docker run -v mydata:/app/data myapp
+```
+
+Benefits:
+- Data persistence
+- Share data between containers
+
+---
+
+## 12. What is Port Mapping?
+Port mapping connects container ports to host machine ports.
+
+Example:
+```bash
+docker run -p 3000:3000 myapp
+```
+
+Format:
+```bash
+host_port:container_port
+```
+
+---
+
+## 13. What is `.dockerignore`?
+It prevents unnecessary files from being copied into Docker images.
+
+Example:
+```txt
+node_modules
+.git
+.env
+```
+
+---
+
+## 14. What is Layer Caching in Docker?
+Docker caches image layers to speed up builds.
+
+Best practice:
+```dockerfile
+COPY package*.json ./
+RUN npm install
+COPY . .
+```
+
+This avoids reinstalling dependencies unnecessarily.
+
+---
+
+## 15. What is Alpine Image?
+Alpine is a lightweight Linux-based Docker image.
+
+Example:
+```dockerfile
+FROM node:20-alpine
+```
+
+Benefits:
+- Smaller image size
+- Faster download
+- Better security surface
+
+---
+
+## 16. How to check container logs?
+```bash
+docker logs <container_id>
+```
+
+Live logs:
+```bash
+docker logs -f <container_id>
+```
+
+---
+
+## 17. How to enter inside a running container?
+```bash
+docker exec -it <container_id> bash
+```
+
+For Alpine:
+```bash
+docker exec -it <container_id> sh
+```
+
+---
+
+## 18. What is Docker Network?
+Docker networking allows containers to communicate with each other.
+
+Create network:
+```bash
+docker network create mynetwork
+```
+
+Run container with network:
+```bash
+docker run --network=mynetwork myapp
+```
+
+---
+
+## 19. What is Multi-stage Build?
+Used to reduce final image size.
+
+Example:
+```dockerfile
+# Build stage
+FROM node:20 AS builder
+
+WORKDIR /app
+
+COPY . .
+
+RUN npm install
+RUN npm run build
+
+# Production stage
+FROM nginx:alpine
+
+COPY --from=builder /app/build /usr/share/nginx/html
+```
+
+---
+
+## 20. What are Docker Best Practices?
+
+- Use lightweight images
+- Use `.dockerignore`
+- Avoid running as root
+- Use multi-stage builds
+- Keep images small
+- Use specific versions instead of latest
+- Minimize layers
+
+---
+
+# Node.js Docker Example
+
+## Dockerfile
+```dockerfile
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
+```
+
+## Build Image
+```bash
+docker build -t nodeapp .
+```
+
+## Run Container
+```bash
+docker run -p 3000:3000 nodeapp
+```
+
+---
+
+# MongoDB + Node.js using Docker Compose
+
+```yaml
+version: '3'
+
+services:
+  backend:
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+```
+
+Run:
+```bash
+docker-compose up
+```
