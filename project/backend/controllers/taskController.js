@@ -2,80 +2,176 @@ const Task = require("../models/Task");
 const { redisClient } = require("../config/redis");
 
 const CACHE_KEY = "tasks:all";
-const CACHE_TTL = 60;
+const CACHE_TTL = 60; // seconds
 
+/**
+ * Remove cached task list
+ */
 const invalidateCache = async () => {
   try {
-    if (redisClient.isOpen) {
+    if (redisClient?.isOpen) {
       await redisClient.del(CACHE_KEY);
     }
-  } catch (err) {
-    console.error("Cache invalidation error:", err.message);
+  } catch (error) {
+    console.error("Redis cache invalidation failed:", error.message);
   }
 };
 
-// Fetch all tasks
-// Uses Redis caching to improve performance for multiple users accessing shared data
-// Helps collaboration by ensuring fast reads for all users viewing the same task list
+/**
+ * Get all tasks
+ * Uses Redis caching to reduce database load
+ */
 exports.getTasks = async (req, res) => {
   try {
-    if (redisClient.isOpen) {
-      const cached = await redisClient.get(CACHE_KEY);
-      if (cached) {
-        return res.json({ source: "cache", data: JSON.parse(cached) });
+    // Check cache first
+    if (redisClient?.isOpen) {
+      const cachedTasks = await redisClient.get(CACHE_KEY);
+
+      if (cachedTasks) {
+        return res.status(200).json({
+          success: true,
+          source: "cache",
+          data: JSON.parse(cachedTasks),
+        });
       }
     }
 
-    const tasks = await Task.find().sort({ createdAt: -1 });
+    // Fetch from database
+    const tasks = await Task.find()
+      .sort({ createdAt: -1 })
+      .lean();
 
-    if (redisClient.isOpen) {
-      await redisClient.setEx(CACHE_KEY, CACHE_TTL, JSON.stringify(tasks));
+    // Store in cache
+    if (redisClient?.isOpen) {
+      await redisClient.setEx(
+        CACHE_KEY,
+        CACHE_TTL,
+        JSON.stringify(tasks)
+      );
     }
 
-    res.json({ source: "db", data: tasks });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+    return res.status(200).json({
+      success: true,
+      source: "database",
+      data: tasks,
+    });
+  } catch (error) {
+    console.error("Get tasks error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch tasks",
+      error: error.message,
+    });
   }
 };
 
-// Create a new task
-// Represents a collaborative action where a user adds a task to the shared system
-// Cache is invalidated so all users immediately see the newly created task
+/**
+ * Create new task
+ */
 exports.createTask = async (req, res) => {
   try {
-    const { title } = req.body;
-    if (!title || !title.trim()) {
-      return res.status(400).json({ error: "Title is required" });
+    const title = req.body?.title?.trim();
+
+    if (!title) {
+      return res.status(400).json({
+        success: false,
+        message: "Task title is required",
+      });
     }
-    const task = await Task.create({ title: title.trim() });
+
+    const task = await Task.create({ title });
+
+    // Clear outdated cache
     await invalidateCache();
-    res.status(201).json(task);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+
+    return res.status(201).json({
+      success: true,
+      message: "Task created successfully",
+      data: task,
+    });
+  } catch (error) {
+    console.error("Create task error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to create task",
+      error: error.message,
+    });
   }
 };
 
+/**
+ * Update task
+ */
 exports.updateTask = async (req, res) => {
   try {
-    const task = await Task.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
-    if (!task) return res.status(404).json({ error: "Task not found" });
+    const updatedTask = await Task.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+
+    if (!updatedTask) {
+      return res.status(404).json({
+        success: false,
+        message: "Task not found",
+      });
+    }
+
+    // Clear outdated cache
     await invalidateCache();
-    res.json(task);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+
+    return res.status(200).json({
+      success: true,
+      message: "Task updated successfully",
+      data: updatedTask,
+    });
+  } catch (error) {
+    console.error("Update task error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to update task",
+      error: error.message,
+    });
   }
 };
 
+/**
+ * Delete task
+ */
 exports.deleteTask = async (req, res) => {
   try {
-    const task = await Task.findByIdAndDelete(req.params.id);
-    if (!task) return res.status(404).json({ error: "Task not found" });
+    const deletedTask = await Task.findByIdAndDelete(req.params.id);
+
+    if (!deletedTask) {
+      return res.status(404).json({
+        success: false,
+        message: "Task not found",
+      });
+    }
+
+    // Clear outdated cache
     await invalidateCache();
-    res.json({ message: "Task deleted", id: req.params.id });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+
+    return res.status(200).json({
+      success: true,
+      message: "Task deleted successfully",
+      data: {
+        id: req.params.id,
+      },
+    });
+  } catch (error) {
+    console.error("Delete task error:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to delete task",
+      error: error.message,
+    });
   }
 };
