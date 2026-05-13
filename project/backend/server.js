@@ -21,7 +21,6 @@ const start = async () => {
   console.log('DB connected successfully');
   try {
     await connectRedis();
-    console.log('Redis connected successfully');
   } catch (err) {
     console.error("Redis failed to connect at startup:", err.message);
   }
