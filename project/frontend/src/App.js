@@ -36,6 +36,7 @@ function App() {
       setTitle("");
       fetchTasks();
     } catch (err) {
+      console.log(err);
       setError("Failed to add task");
     }
   };
@@ -47,6 +48,7 @@ function App() {
       });
       fetchTasks();
     } catch (err) {
+      console.log(err);
       setError("Failed to update task");
     }
   };
